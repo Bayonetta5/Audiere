@@ -151,7 +151,7 @@
 		</Configuration>
 		<Configuration
 			Name="Release|Win32"
-			OutputDirectory="$(SolutionDir)objs\$(ConfigurationName)\lib"
+			OutputDirectory="$(SolutionDir)$(PlatformName)\$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="4"
 			WholeProgramOptimization="1"
@@ -433,11 +433,11 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\include\protected\all.h"
+				RelativePath=".\include\private\all.h"
 				>
 			</File>
 			<File
-				RelativePath=".\include\private\all.h"
+				RelativePath=".\include\protected\all.h"
 				>
 			</File>
 			<File
@@ -513,11 +513,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\include\protected\stream_encoder.h"
+				RelativePath=".\include\private\stream_encoder.h"
 				>
 			</File>
 			<File
-				RelativePath=".\include\private\stream_encoder.h"
+				RelativePath=".\include\protected\stream_encoder.h"
 				>
 			</File>
 			<File
