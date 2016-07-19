@@ -1,4 +1,4 @@
-# Audiere
+# Audiere tweaked for 32/64 bit MSVC 2005 builds
 Audiere tweaked to compile 32 bit and 64 bit binaries for MSVC 2005.  I couldn't find any existing ones, so here they are.  Includes all dependencies setup in one msvc 2005 solution.
 
 To compile, open Audiere/vc8/audiere.sln
