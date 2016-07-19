@@ -9,6 +9,8 @@ flac: 1.3.1
 libogg: 1.3.2
 libvorbis: 1.3.5
 
+Pre-compiled binaries available here: http://www.codedojo.com/?p=1977
+
 NOTE: The 64 bit binaries are missing mod/xm playback because I was too lazy to find and compile Dumb.  Also missing speexfile support, whatever that is.
 
 To-renable those, remove NO_DUMB and NO_SPEEX preprocessor definitions and add the libs.
