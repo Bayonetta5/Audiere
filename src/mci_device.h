@@ -40,8 +40,12 @@ namespace audiere {
         WS_POPUP,
         0, 0, 0, 0,
         NULL, NULL, GetModuleHandle(NULL), NULL);
-      if (m_window) {
-        SetWindowLong(m_window, GWL_USERDATA, reinterpret_cast<LONG>(this));
+      if (m_window) 
+	  {
+		//new way that works in 64bit
+
+//		  SetWindowLong(m_window, GWL_USERDATA, reinterpret_cast<LONG>(this));
+		  SetWindowLongPtrA(m_window, 0, reinterpret_cast<LONG_PTR>(this));
       } else {
         ADR_LOG("MCI notification window creation failed");
       }
@@ -96,7 +100,8 @@ namespace audiere {
     static LRESULT CALLBACK notifyWindowProc(HWND window, UINT msg, WPARAM wparam, LPARAM lparam) {
       switch (msg) {
         case MM_MCINOTIFY: {
-          MCIDevice* This = reinterpret_cast<MCIDevice*>(GetWindowLong(window, GWL_USERDATA));
+			//Seth changes this to GetWindowLongPtrA
+          MCIDevice* This = reinterpret_cast<MCIDevice*>(GetWindowLongPtrA(window, 0));
           if (This) {
             This->notify(wparam);
           }

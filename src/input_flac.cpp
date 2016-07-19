@@ -216,7 +216,8 @@ namespace audiere {
     m_position += samples_per_channel;
     return FLAC__STREAM_DECODER_WRITE_STATUS_CONTINUE;
   }
-
+/*
+was:  Seth changed it to below by stealing code from https://sourceforge.net/p/audiere/mailman/audiere-devel/?viewmonth=200806 (by Markus Ewald?)
 
   FLAC__StreamDecoderReadStatus FLACInputStream::read_callback(
     const FLAC__StreamDecoder* decoder,
@@ -230,6 +231,23 @@ namespace audiere {
     } else {
       return FLAC__STREAM_DECODER_READ_STATUS_CONTINUE;
     }
+  }
+  */
+
+    FLAC__StreamDecoderReadStatus FLACInputStream::read_callback(
+     const FLAC__StreamDecoder* decoder,
+	FLAC__byte buffer[],
+	size_t *bytes,
+	void* client_data)
+  {
+	  *bytes = getFile(client_data)->read(buffer, *bytes);
+	  if (*bytes == 0) 
+	  {
+	     return FLAC__STREAM_DECODER_READ_STATUS_END_OF_STREAM;
+	  } else 
+	  {
+		  return FLAC__STREAM_DECODER_READ_STATUS_CONTINUE;
+	  }
   }
 
 
